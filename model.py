@@ -9,7 +9,7 @@ from keras.optimizers import *
 from keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from keras import backend as keras
 
-
+#change weight to 256, 256, 2 to make sure it's really working
 def unet(pretrained_weights = None,input_size = (256,256,1)):
     inputs = Input(input_size)
     conv1 = Conv2D(64, 3, activation = 'relu', padding = 'same', kernel_initializer = 'he_normal')(inputs)
@@ -84,7 +84,7 @@ def unet(pretrained_weights = None,input_size = (256,256,1)):
     model = Model(inputs,conv10)
 
     model.compile(optimizer = Adam(lr = 1e-4), loss = 'binary_crossentropy', metrics = ['accuracy'])
-    model.compile(optimizer=Adam(lr=1e-4), loss = 'mean_squared_error', metrics=['mean_absolute_error'])
+    #model.compile(optimizer=Adam(lr=1e-4), loss = 'mean_squared_error', metrics=['mean_absolute_error'])
 
     
     #model.summary()
